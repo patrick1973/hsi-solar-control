@@ -1,7 +1,9 @@
 void setupIO()
 {
+  Serial.begin(9600);
   servo_vertical.attach(5);   // attaches the servo on pin 5 (Elevation) to the servo object 
   servo_horizontal.attach(6); // attaches the servo on pin 6 (Horizontal) to the servo object
+  
   pinMode(SCROLL_PIN, INPUT);
   pinMode(LED_PIN,OUTPUT);
   lcd.begin(16, 2);
