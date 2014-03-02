@@ -1,5 +1,5 @@
 
-void showLdrValues()
+void showLdrValuesLCD()
 {
   lcd.clear();
   lcd.print("L: ");
@@ -17,7 +17,7 @@ void showLdrValues()
   delay(1000);
 }
 
-void showSerovPositions()
+void showSerovPositionsLCD()
 {
   lcd.clear();
   lcd.print("Hor: ");
@@ -28,4 +28,19 @@ void showSerovPositions()
   lcd.setCursor(0,0);
   delay(100);
 }
-
+/**
+*------------------------------------------------------------------------------
+*Read the time and or date from the C# application
+*------------------------------------------------------------------------------
+*/
+void readDateTime()
+{
+  String inputString = "";
+  while(Serial.available())
+  {
+    char inChar = (char)Serial.read(); 
+    inputString += inChar;
+    lcd.clear();
+    lcd.print(inputString);
+  } 
+}
