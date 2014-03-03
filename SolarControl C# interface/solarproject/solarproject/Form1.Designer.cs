@@ -47,7 +47,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPortArduino
@@ -125,7 +129,7 @@
             // timerReadArduinoValues
             // 
             this.timerReadArduinoValues.Enabled = true;
-            this.timerReadArduinoValues.Interval = 500;
+            this.timerReadArduinoValues.Interval = 1500;
             this.timerReadArduinoValues.Tick += new System.EventHandler(this.timerReadArduinoValues_Tick);
             // 
             // tbLDRLeft
@@ -192,11 +196,44 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "LDR Bottom";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(12, 495);
+            this.trackBar1.Maximum = 2000;
+            this.trackBar1.Minimum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(833, 45);
+            this.trackBar1.TabIndex = 15;
+            this.trackBar1.TickFrequency = 100;
+            this.trackBar1.Value = 1000;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(367, 469);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(82, 20);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Text = "1000";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(284, 472);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Read Speed";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 578);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -214,6 +251,7 @@
             this.Text = "Form1";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,6 +277,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
     }
 }
 

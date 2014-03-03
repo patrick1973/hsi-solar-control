@@ -13,6 +13,7 @@ namespace solarproject
 {
     public partial class Form1 : Form
     {
+        List<String> LDRvalues = new List<string>();
         Communications comms = new Communications();
        
         public Form1()
@@ -120,9 +121,25 @@ namespace solarproject
 
         private void timerReadArduinoValues_Tick(object sender, EventArgs e)
         {
-            tbLDRLeft.Text = comms.readSerialData(serialPortArduino);
-            tbLDRBottom.Text = comms.readSerialData(serialPortArduino);
-            
+            if (serialPortArduino.IsOpen)
+            {
+                String temp = "";
+                temp = comms.readSerialData(serialPortArduino, "begin", "end");
+                LDRvalues = comms.collect(temp);
+                this.tbLDRLeft.Text = LDRvalues[0];
+                this.tbLDRRight.Text = LDRvalues[1];
+                this.tbLDRTop.Text = LDRvalues[2];
+                this.tbLDRBottom.Text = LDRvalues[3];
+            }
         }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            this.textBox1.Text = this.trackBar1.Value.ToString();
+            this.timerReadArduinoValues.Interval = this.trackBar1.Value;
+
+        }
+
+          
     }
 }
