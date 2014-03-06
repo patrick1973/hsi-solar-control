@@ -1,8 +1,7 @@
 
-
-
 /**
 *------------------------------------------------------------------------------
+*Calculate the average value of the top sensor and the left sensor
 *@return the average value of left top
 *------------------------------------------------------------------------------
 */
@@ -12,6 +11,7 @@ int avg_Left_Top()
 }
 /**
 *------------------------------------------------------------------------------
+*Calculate the average value of the bottom sensor and the left sensor
 *@return the average value of left bottom
 *------------------------------------------------------------------------------
 */
@@ -21,7 +21,8 @@ int avg_Left_Bottom()
 }
 /**
 *------------------------------------------------------------------------------
-*@return the average value of left top
+*Calculate the average value of the top sensor and the right sensor
+*@return the average value of right top
 *------------------------------------------------------------------------------
 */
 int avg_Right_Top()
@@ -30,6 +31,7 @@ int avg_Right_Top()
 }
 /**
 *------------------------------------------------------------------------------
+*Calculate the average value of the bottom sensor and the right sensor
 *@return the average value of left top
 *------------------------------------------------------------------------------
 */
@@ -40,6 +42,7 @@ int avg_Right_Bottom()
 
 /**
 *------------------------------------------------------------------------------
+*Calculate the average value of the top sensor and the bottom sensor
 *@return the diffirence of up and down
 *------------------------------------------------------------------------------
 */
@@ -50,6 +53,7 @@ int differenceVertical()
 
 /**
 *------------------------------------------------------------------------------
+*Calculate the average value of the right sensor and the left sensor
 *@return the diffirence of left and right
 *------------------------------------------------------------------------------
 */
@@ -65,15 +69,15 @@ int differenceHorizontal()
 */
 int checkVerticalPosition()
 {
-  static int valueVertical = 0;
+  static int valueVertical = 15; // min value is 15 miss allignment of the mechanical settings.
   if(-1*readToleranceValue() > differenceVertical() || differenceVertical() > readToleranceValue())
   {
     if (( avg_Left_Top()+ avg_Right_Top()) > (avg_Left_Bottom() + avg_Right_Bottom()))
     {
       valueVertical=--valueVertical;
-      if (valueVertical < 1)
+      if (valueVertical < 15)
       {
-        valueVertical = 1;
+        valueVertical = 15;
       }
     }
     else if ((avg_Left_Top() + avg_Right_Top()) < (avg_Left_Bottom() + avg_Right_Bottom()))

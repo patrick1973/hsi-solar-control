@@ -1,5 +1,12 @@
 #include <arduino.h>
 
+// setup values for the Steinman calculations used for the NTC
+#define THERMISTORNOMINAL 10000 // resistance at 25 degrees C     
+#define TEMPERATURENOMINAL 25   // temp. for nominal resistance (almost always 25 C)
+#define NUMSAMPLES 5            // how many samples to take and average
+#define BCOEFFICIENT 3950       // The beta coefficient of the thermistor (usually 3000-4000)
+#define SERIESRESISTOR 10000    // the value of the 'other' resistor
+
 Servo servo_vertical;
 Servo servo_horizontal;
 
@@ -25,3 +32,18 @@ const int D7_PIN =  7;
 
 // create display object
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_pin, D5_PIN, D6_PIN, D7_PIN);
+
+/**
+*restPosition        both servo's are sent to position 0
+*controlPosition     find the best suncovarage, normal control
+*horizontalPosition  place the pannel horizontal, cleaning / repairs 
+*verticalPosition    defrosting hiding for hale showers
+*/
+
+typedef enum Control
+{
+  restPosition,       
+  controlPosition,
+  gotoHorizontalPosition,
+  gotoVerticalPosition 
+}state;
