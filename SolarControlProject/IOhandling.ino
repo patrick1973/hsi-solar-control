@@ -1,6 +1,6 @@
 void setupIO()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   servo_vertical.attach(5);   // attaches the servo on pin 5 (Elevation) to the servo object 
   servo_horizontal.attach(6); // attaches the servo on pin 6 (Horizontal) to the servo object
   
@@ -51,7 +51,7 @@ int readDownLdrValue()
  *@return the actual raw value of the potentiometer to adjust te tollerance value (misschien niet het juiste woord.
  *------------------------------------------------------------------------------
  */
-int readToleranceValue()
+int readHysteresisValue()
 {
   return analogRead(TOLERANCEPIN);
 }

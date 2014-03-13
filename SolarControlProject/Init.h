@@ -34,11 +34,11 @@ const int D7_PIN =  7;
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_pin, D5_PIN, D6_PIN, D7_PIN);
 
 /**
-*restPosition        both servo's are sent to position 0
-*controlPosition     find the best suncovarage, normal control
-*horizontalPosition  place the pannel horizontal, cleaning / repairs 
-*verticalPosition    defrosting hiding for hale showers
-*/
+ *restPosition        both servo's are sent to position 0
+ *controlPosition     find the best suncovarage, normal control
+ *horizontalPosition  place the pannel horizontal, cleaning / repairs 
+ *verticalPosition    defrosting hiding for hale showers
+ */
 
 typedef enum Control
 {
@@ -46,4 +46,16 @@ typedef enum Control
   controlPosition,
   gotoHorizontalPosition,
   gotoVerticalPosition 
-}state;
+}
+state;
+
+typedef enum machineStates
+{
+  SYSTEM_STOP,
+  SYSTEM_MANUAL,
+  SYSTEM_AUTO,
+  SYSTEM_CLEANING,
+  SYSTEM_MAINTENANCE,
+  SYSTEM_IDLE
+}mStates;
+

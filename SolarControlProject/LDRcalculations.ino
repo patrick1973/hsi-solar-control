@@ -42,7 +42,7 @@ int avg_Right_Bottom()
 
 /**
 *------------------------------------------------------------------------------
-*Calculate the average value of the top sensor and the bottom sensor
+*Calculate the deifference between calcultaed top value and calculated bottom value.
 *@return the diffirence of up and down
 *------------------------------------------------------------------------------
 */
@@ -70,9 +70,9 @@ int differenceHorizontal()
 int checkVerticalPosition()
 {
   static int valueVertical = 15; // min value is 15 miss allignment of the mechanical settings.
-  if(-1*readToleranceValue() > differenceVertical() || differenceVertical() > readToleranceValue())
+  if(-1*readHysteresisValue() > differenceVertical() || differenceVertical() > readHysteresisValue()) //Controleer of de gemeten gemiddelde waarde buiten de hystiresis ligt
   {
-    if (( avg_Left_Top()+ avg_Right_Top()) > (avg_Left_Bottom() + avg_Right_Bottom()))
+    if (( avg_Left_Top()+ avg_Right_Top()) > (avg_Left_Bottom() + avg_Right_Bottom()))                // naar boven
     {
       valueVertical=--valueVertical;
       if (valueVertical < 15)
@@ -80,7 +80,7 @@ int checkVerticalPosition()
         valueVertical = 15;
       }
     }
-    else if ((avg_Left_Top() + avg_Right_Top()) < (avg_Left_Bottom() + avg_Right_Bottom()))
+    else if ((avg_Left_Top() + avg_Right_Top()) < (avg_Left_Bottom() + avg_Right_Bottom()))          // naar beneden
     {
       valueVertical = ++valueVertical;
       if (valueVertical > 100)
@@ -100,9 +100,9 @@ int checkVerticalPosition()
 int checkHorizontalPosition()
 {
   static int valueHorizontal = 0;
-  if(-1*readToleranceValue() > differenceHorizontal() || differenceHorizontal() > readToleranceValue())
+  if(-1*readHysteresisValue() > differenceHorizontal() || differenceHorizontal() > readHysteresisValue())
   {
-    if (( avg_Left_Top()+ avg_Left_Bottom()) > (avg_Right_Top() + avg_Right_Bottom()))
+    if (( avg_Left_Top()+ avg_Left_Bottom()) > (avg_Right_Top() + avg_Right_Bottom())) 
     {
       valueHorizontal=++valueHorizontal;
       if (valueHorizontal > 179)
