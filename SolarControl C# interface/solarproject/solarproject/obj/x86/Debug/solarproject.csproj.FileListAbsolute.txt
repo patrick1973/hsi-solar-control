@@ -15,3 +15,5 @@ D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdracht
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.exe
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.aboutDialog.resources
+D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.csprojResolveAssemblyReference.cache
+D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.spashScreen.resources

@@ -39,14 +39,11 @@
             this.toolStripStatusLabelComPort = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timerReadArduinoValues = new System.Windows.Forms.Timer(this.components);
+            this.timerUpdateArduinoValues = new System.Windows.Forms.Timer(this.components);
             this.tbLDRLeft = new System.Windows.Forms.TextBox();
             this.tbLDRRight = new System.Windows.Forms.TextBox();
             this.tbLDRTop = new System.Windows.Forms.TextBox();
             this.tbLDRBottom = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.timerShowProgress = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -79,15 +76,15 @@
             this.toolStripCBbaudrate = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
             this.loggerInstellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -116,7 +113,7 @@
             this.toolStripStatusLabelComPort});
             this.statusStrip1.Location = new System.Drawing.Point(0, 556);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1214, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1359, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -163,11 +160,11 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(109, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
-            // timerReadArduinoValues
+            // timerUpdateArduinoValues
             // 
-            this.timerReadArduinoValues.Enabled = true;
-            this.timerReadArduinoValues.Interval = 1500;
-            this.timerReadArduinoValues.Tick += new System.EventHandler(this.timerReadArduinoValues_Tick);
+            this.timerUpdateArduinoValues.Enabled = true;
+            this.timerUpdateArduinoValues.Interval = 1500;
+            this.timerUpdateArduinoValues.Tick += new System.EventHandler(this.timerUpdateArduinoValues_Tick);
             // 
             // tbLDRLeft
             // 
@@ -200,36 +197,6 @@
             this.tbLDRBottom.Size = new System.Drawing.Size(66, 20);
             this.tbLDRBottom.TabIndex = 10;
             this.tbLDRBottom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 495);
-            this.trackBar1.Maximum = 2000;
-            this.trackBar1.Minimum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(532, 45);
-            this.trackBar1.TabIndex = 15;
-            this.trackBar1.TickFrequency = 100;
-            this.trackBar1.Value = 1000;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(239, 469);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 20);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "1000";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(166, 472);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Read Speed";
             // 
             // timerShowProgress
             // 
@@ -339,7 +306,8 @@
             "SYS_CLEANING",
             "SYS_MAINTENANCE",
             "SYS_IDLE   ",
-            "SYS_STOP                "});
+            "SYS_STOP                ",
+            "SYS_DEFROST"});
             this.cbSystemState.Location = new System.Drawing.Point(691, 27);
             this.cbSystemState.Name = "cbSystemState";
             this.cbSystemState.Size = new System.Drawing.Size(183, 21);
@@ -470,7 +438,7 @@
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1214, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1359, 24);
             this.menuStrip1.TabIndex = 32;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -483,7 +451,7 @@
             this.toolStripTextBox2,
             this.toolStripTextBox4});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 23);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 20);
             this.toolStripMenuItem1.Text = "Arduino Connection";
             // 
             // communicationPortToolStripMenuItem
@@ -542,12 +510,19 @@
             this.toolStripTextBox2.Text = "Disconnect Arduino";
             this.toolStripTextBox2.Click += new System.EventHandler(this.toolStripTextBox2_Click);
             // 
+            // toolStripTextBox4
+            // 
+            this.toolStripTextBox4.Name = "toolStripTextBox4";
+            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox4.Text = "Exit";
+            this.toolStripTextBox4.Click += new System.EventHandler(this.toolStripTextBox4_Click_1);
+            // 
             // loggerInstellingenToolStripMenuItem
             // 
             this.loggerInstellingenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox3});
             this.loggerInstellingenToolStripMenuItem.Name = "loggerInstellingenToolStripMenuItem";
-            this.loggerInstellingenToolStripMenuItem.Size = new System.Drawing.Size(120, 23);
+            this.loggerInstellingenToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
             this.loggerInstellingenToolStripMenuItem.Text = "Logger instellingen";
             // 
             // toolStripTextBox3
@@ -556,23 +531,6 @@
             this.toolStripTextBox3.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBox3.Text = "Bestands Naam";
             this.toolStripTextBox3.Click += new System.EventHandler(this.toolStripTextBox3_Click);
-            // 
-            // toolStripTextBox4
-            // 
-            this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox4.Text = "Exit";
-            this.toolStripTextBox4.Click += new System.EventHandler(this.toolStripTextBox4_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::solarproject.Properties.Resources.LDR11;
-            this.pictureBox1.Location = new System.Drawing.Point(54, 107);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(445, 356);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // toolStripMenuItem2
             // 
@@ -590,12 +548,31 @@
             this.toolStripTextBox5.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolStripTextBox5.Click += new System.EventHandler(this.toolStripTextBox5_Click_1);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::solarproject.Properties.Resources.LDR11;
+            this.pictureBox1.Location = new System.Drawing.Point(54, 107);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(445, 356);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(1133, 107);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(214, 446);
+            this.richTextBox1.TabIndex = 33;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1214, 578);
+            this.ClientSize = new System.Drawing.Size(1359, 578);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tbArduinoStatus);
             this.Controls.Add(this.label6);
@@ -604,9 +581,6 @@
             this.Controls.Add(this.tbLDRTop);
             this.Controls.Add(this.tbLDRBottom);
             this.Controls.Add(this.tbLDRLeft);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.tbLDRRight);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -617,7 +591,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -639,14 +612,11 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Timer timerReadArduinoValues;
+        private System.Windows.Forms.Timer timerUpdateArduinoValues;
         private System.Windows.Forms.TextBox tbLDRLeft;
         private System.Windows.Forms.TextBox tbLDRRight;
         private System.Windows.Forms.TextBox tbLDRTop;
         private System.Windows.Forms.TextBox tbLDRBottom;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.Timer timerShowProgress;
@@ -691,6 +661,7 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
