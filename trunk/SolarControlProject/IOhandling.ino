@@ -1,6 +1,7 @@
 void setupIO()
 {
-  Serial.begin(115200);
+  Serial.begin(115200);       // setup serial communications with PC
+  Wire.begin();               // setup the I2C communications with PCF8591P
   servo_vertical.attach(5);   // attaches the servo on pin 5 (Elevation) to the servo object 
   servo_horizontal.attach(6); // attaches the servo on pin 6 (Horizontal) to the servo object
   
@@ -51,17 +52,35 @@ int readDownLdrValue()
  *@return the actual raw value of the potentiometer to adjust te tollerance value (misschien niet het juiste woord.
  *------------------------------------------------------------------------------
  */
-int readHysteresisValue()
+byte readHysteresisValue()
 {
-  return analogRead(TOLERANCEPIN);
+  return adcValues3;
 }
 /**
  *------------------------------------------------------------------------------
- *@return the actual raw value of the NTC
+ *@return the actual raw value of the NTC placed outside the panel.
  *------------------------------------------------------------------------------
  */
-int readNtcValue()
+byte readNtcValueOutside()
 {
-  return analogRead(NTCPIN);
+  return adcValues0;
 }
 
+/**
+ *------------------------------------------------------------------------------
+ *@return the actual raw value of the NTC placed on the panel.
+ *------------------------------------------------------------------------------
+ */
+byte readNtcValuePanel()
+{
+  return adcValues1;
+}
+/**
+ *------------------------------------------------------------------------------
+ *@return the actual raw value of the POT to create a switch value for the EODS.
+ *------------------------------------------------------------------------------
+ */
+byte readPotValueEODS()
+{
+  return adcValues2;
+}

@@ -24,7 +24,7 @@ float ntcTemperature(int temperature)
   average /= NUMSAMPLES;
 
   // convert the value to resistance
-  average = 1023 / average - 1;
+  average = MAX_VALUE_ADC_PCF8591P / average - 1;
   average = SERIESRESISTOR / average;
 
   float steinhart;
