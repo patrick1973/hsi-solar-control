@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
+using System.Threading;
 
 
 
@@ -17,23 +18,47 @@ namespace solarproject
     public partial class Form1 : Form
     {
         List<String> LDRvalues = new List<string>();
+        List<String> Eventvalues = new List<string>();
         Communications comms = new Communications();
         Logger log = new Logger();
+
+
         private String bestandsNaam;
         private int teller = 0;
         private Boolean dirCount = false;
-        state status = 0;
-       
+        private state status = 0;
+        private String inData;
         public Form1()
         {
+            Thread t = new Thread(new ThreadStart(SplashScreen));
+            t.Start();
+            Thread.Sleep(5000);
             InitializeComponent();
-           
+            t.Abort();
+
             getComPorts(comms.getComPorts());
             this.labelLoggerStatus.Text = "logger gestopt";
             this.labelLoggerStatus.BackColor = Color.Red;
 
-            
+            serialPortArduino.ReadBufferSize = 100;
+            serialPortArduino.DataReceived += new SerialDataReceivedEventHandler(serialPortArduino_DataReceived);
         }
+        public void SplashScreen()
+        {
+            Application.Run(new spashScreen());
+        }
+
+        void serialPortArduino_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            //inData = sp.ReadLine()+ "\n";
+            
+            String temp = "";
+            temp = comms.readSerialData(sp, "begin", "end");
+            Eventvalues = comms.collect(temp);
+        }
+
+        
         /// <summary>
         /// Controleer welk comporten op de computer aanwezig zijn.
         /// vul de combobox met de gevonden poorten.
@@ -78,14 +103,11 @@ namespace solarproject
                 }
                 catch (InvalidOperationException ex)
                 {
-
                     MessageBox.Show("select a comm port " + ex.ToString(), "Error");
                 }
             }
         }
 
-        
-        
 
         private void timerReadSystemTime_Tick(object sender, EventArgs e)
         {
@@ -106,23 +128,23 @@ namespace solarproject
 
        
 
-        private void timerReadArduinoValues_Tick(object sender, EventArgs e)
+        private void timerUpdateArduinoValues_Tick(object sender, EventArgs e)
         {
             
             if (serialPortArduino.IsOpen)
             {
-                String temp = "";
-                temp = comms.readSerialData(serialPortArduino, "begin", "end");
-                LDRvalues = comms.collect(temp);
-                if (LDRvalues.Count >= 3)
+                //String temp = "";
+                //temp = comms.readSerialData(serialPortArduino, "begin", "end");
+                //Eventvalues = comms.collect(temp);
+                if (Eventvalues.Count >= 3)
                 {
-                    this.tbLDRLeft.Text = LDRvalues[0];
-                    this.tbLDRRight.Text = LDRvalues[1];
-                    this.tbLDRTop.Text = LDRvalues[2];
-                    this.tbLDRBottom.Text = LDRvalues[3];
-                    this.tbArduinoStatus.Text =LDRvalues[4];
-                    this.tbFeedbackHorizontal.Text = LDRvalues[5] + "°";
-                    this.tbFeedbackVertical.Text = LDRvalues[6] + "°";
+                    this.tbLDRLeft.Text = Eventvalues[0];
+                    this.tbLDRRight.Text = Eventvalues[1];
+                    this.tbLDRTop.Text = Eventvalues[2];
+                    this.tbLDRBottom.Text = Eventvalues[3];
+                    this.tbArduinoStatus.Text = Eventvalues[4];
+                    this.tbFeedbackHorizontal.Text = Eventvalues[5] + "°";
+                    this.tbFeedbackVertical.Text = Eventvalues[6] + "°";
                 }
             }
         }
@@ -179,12 +201,7 @@ namespace solarproject
             
         }
 
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            timerReadArduinoValues.Interval = this.trackBar1.Value;
-            this.textBox1.Text = this.trackBar1.Value.ToString();
-        }
-
+        
         private void btnJogUp_Click(object sender, EventArgs e)
         {
             if ((status== state.SYS_MANUAL) && serialPortArduino.IsOpen)

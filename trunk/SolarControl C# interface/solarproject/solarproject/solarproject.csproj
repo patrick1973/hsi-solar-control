@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Communications.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="spashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="spashScreen.Designer.cs">
+      <DependentUpon>spashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Types.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -79,6 +85,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="spashScreen.resx">
+      <DependentUpon>spashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LDR1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zonnepanelen_mannetje.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solar-power-generator140.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zonnepaneel.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
