@@ -28,19 +28,4 @@ void showSerovPositionsLCD()
   lcd.setCursor(0,0);
   delay(100);
 }
-/**
-*------------------------------------------------------------------------------
-*Read the time and or date from the C# application
-*------------------------------------------------------------------------------
-*/
-void readDateTime()
-{
-  String inputString = "";
-  while(Serial.available())
-  {
-    char inChar = (char)Serial.read(); 
-    inputString += inChar;
-    lcd.clear();
-    lcd.print(inputString);
-  } 
-}
+
