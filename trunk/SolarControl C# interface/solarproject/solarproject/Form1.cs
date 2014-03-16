@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
 
 
 
@@ -17,7 +18,8 @@ namespace solarproject
     {
         List<String> LDRvalues = new List<string>();
         Communications comms = new Communications();
-        private int machineState = 0; 
+        Logger log = new Logger();
+        private String bestandsNaam;
         private int teller = 0;
         private Boolean dirCount = false;
         state status = 0;
@@ -27,7 +29,9 @@ namespace solarproject
             InitializeComponent();
            
             getComPorts(comms.getComPorts());
-            toolStripStatusLabel2.Text = "Disconnected";
+            this.labelLoggerStatus.Text = "logger gestopt";
+            this.labelLoggerStatus.BackColor = Color.Red;
+
             
         }
         /// <summary>
@@ -39,7 +43,7 @@ namespace solarproject
             string[] ports = SerialPort.GetPortNames();
             foreach (string port in availPorts)
             {
-                this.cbPorts.Items.Add(port);
+                this.toolStripCbPorts.Items.Add(port);
             }
         }
 
@@ -48,11 +52,12 @@ namespace solarproject
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbPorts_SelectedIndexChanged(object sender, EventArgs e)
+        private void toolStripCbPorts_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                serialPortArduino.PortName = this.cbPorts.SelectedItem.ToString();
+                serialPortArduino.PortName = this.toolStripCbPorts.SelectedItem.ToString();
+                toolStripStatusLabelComPort.Text = this.toolStripCbPorts.SelectedItem.ToString();
             }
             catch (InvalidOperationException ex)
             {
@@ -61,13 +66,15 @@ namespace solarproject
             }
            
         }
-        private void cbBaudRate_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void toolStripCBbaudrate_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!serialPortArduino.IsOpen)
             {
                 try
                 {
-                    serialPortArduino.BaudRate = Convert.ToInt32(this.cbBaudRate.SelectedItem);
+                    serialPortArduino.BaudRate = Convert.ToInt32(this.toolStripCBbaudrate.SelectedItem);
+                    toolStripStatusLabelBaudRate.Text = this.toolStripCBbaudrate.SelectedItem.ToString();
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -77,33 +84,8 @@ namespace solarproject
             }
         }
 
-
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialPortArduino.Open();
-                if (serialPortArduino.IsOpen)
-                {
-                    this.toolStripStatusLabel2.Text = "Connected";
-                    this.timerShowProgress.Enabled = true;
-                }
-            }
-            catch (System.IO.IOException)
-            {
-                MessageBox.Show("Problems with openning the com port ", "Error");
-            }
-            catch (InvalidOperationException ex)
-            {
-
-                MessageBox.Show("Problems with openning the com port " + ex.ToString(), "Error");
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBox.Show("Comport already in use ", "Error");
-            }
-            
-        }
+        
+        
 
         private void timerReadSystemTime_Tick(object sender, EventArgs e)
         {
@@ -112,6 +94,7 @@ namespace solarproject
             writeStringToArduino(DateTime.Now.ToString("HH:mm:ss"));
             
         }
+
         void writeStringToArduino(string message)
         {
             if (serialPortArduino.IsOpen)
@@ -121,29 +104,7 @@ namespace solarproject
             }
         }
 
-        private void btnDisconnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                serialPortArduino.Close();
-                if (!serialPortArduino.IsOpen)
-                {
-                    this.toolStripStatusLabel2.Text = "not connected";
-                    this.timerShowProgress.Enabled = false;
-                    this.teller = 0;
-                    this.toolStripProgressBar1.Value = 0;
-                }
-            }
-            catch (System.IO.IOException )
-            {
-                MessageBox.Show("Problems with closing the com port " , "Error");
-            }
-            catch (InvalidOperationException ex)
-            {
-
-                MessageBox.Show("Problems with closing the com port " + ex.ToString(), "Error");
-            }
-        }
+       
 
         private void timerReadArduinoValues_Tick(object sender, EventArgs e)
         {
@@ -159,16 +120,17 @@ namespace solarproject
                     this.tbLDRRight.Text = LDRvalues[1];
                     this.tbLDRTop.Text = LDRvalues[2];
                     this.tbLDRBottom.Text = LDRvalues[3];
+                    this.tbArduinoStatus.Text =LDRvalues[4];
+                    this.tbFeedbackHorizontal.Text = LDRvalues[5] + "°";
+                    this.tbFeedbackVertical.Text = LDRvalues[6] + "°";
                 }
             }
         }
+
         public SerialPort getPort()
         {
             return serialPortArduino;
         }
-
-        
-       
 
         private void timerShowProgress_Tick(object sender, EventArgs e)
         {
@@ -185,6 +147,7 @@ namespace solarproject
             if (teller < 1)
             {
                 dirCount = false;
+                teller = 0;
             }
 
             if (teller >= 100)
@@ -193,29 +156,7 @@ namespace solarproject
             }
             this.toolStripProgressBar1.Value = teller;
 
-        }
-
-        private void trackBarHorizontal_ValueChanged(object sender, EventArgs e)
-        {
-            if ((status ==  state.SYSTEM_MANUAL) && serialPortArduino.IsOpen)
-            {
-                String message = "$MOVE_SERVO_LEFT_RIGHT;" + this.trackBarHorizontal.Value.ToString() + "#";
-                this.tbSetpointHorizontal.Text = this.trackBarHorizontal.Value.ToString();
-                lbSerialMessagesSend.Items.Add(message);
-                serialPortArduino.WriteLine(message);
-            }
-        }
-
-        private void trackBarVertical_ValueChanged(object sender, EventArgs e)
-        {
-            if ((status == state.SYSTEM_MANUAL) && serialPortArduino.IsOpen)
-            {
-                String message = "$MOVE_SERVO_UP_DOWN;" +this.trackBarVertical.Value.ToString() + "#";
-                this.tbSetpointVertical.Text = this.trackBarVertical.Value.ToString();
-                lbSerialMessagesSend.Items.Add(message);
-                serialPortArduino.Write(message);
-            }
-        }
+        }    
 
         private void cbSystemState_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -223,10 +164,11 @@ namespace solarproject
             DialogResult dialogResult = MessageBox.Show("Are You sure to change the system state? ", "Warning", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                string message = "$" + "SYSTEM_STATE" + ";" + this.cbSystemState.SelectedIndex.ToString() + "#";
                 if (serialPortArduino.IsOpen)
                 {
                     status = selectedItem;
-                    serialPortArduino.Write("$" + selectedItem + "#");
+                    serialPortArduino.Write(message);
                 }
                 lbSerialMessagesRead.Items.Add(selectedItem.ToString());
             }
@@ -234,19 +176,167 @@ namespace solarproject
             {
                 cbSystemState.Text = status.ToString();
             }
+            
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            timerReadArduinoValues.Interval = this.trackBar1.Value;
+            this.textBox1.Text = this.trackBar1.Value.ToString();
+        }
+
+        private void btnJogUp_Click(object sender, EventArgs e)
+        {
+            if ((status== state.SYS_MANUAL) && serialPortArduino.IsOpen)
+            {
+                String message = "$JOG_UP;#";
+                lbSerialMessagesSend.Items.Add(message);
+                serialPortArduino.Write(message);
+            }
+
 
         }
 
-        
+        private void btnJogDown_Click(object sender, EventArgs e)
+        {
+            if ((status == state.SYS_MANUAL) && serialPortArduino.IsOpen)
+            {
+                String message = "$JOG_DOWN;#";
+                lbSerialMessagesSend.Items.Add(message);
+                serialPortArduino.Write(message);
+            }
 
+        }
 
+        private void btnJogLeft_Click(object sender, EventArgs e)
+        {
+            if ((status == state.SYS_MANUAL) && serialPortArduino.IsOpen)
+            {
+                String message = "$JOG_LEFT;#";
+                lbSerialMessagesSend.Items.Add(message);
+                serialPortArduino.Write(message);
+            }
 
-   
+        }
 
-        
+        private void btnJogRight_Click(object sender, EventArgs e)
+        {
+            if ((status == state.SYS_MANUAL) && serialPortArduino.IsOpen)
+            {
+                String message = "$JOG_RIGHT;#";
+                lbSerialMessagesSend.Items.Add(message);
+                serialPortArduino.Write(message);
+            }
+        }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lbSerialMessagesRead.Items.Clear();
+            lbSerialMessagesSend.Items.Clear();
+        }
 
-          
+        private void btnStartLogging_Click(object sender, EventArgs e)
+        {
+            timerLoggerInterval.Interval = Convert.ToInt16(tbLoginterval.Text);
+            timerLoggerInterval.Enabled = true;
+            this.labelLoggerStatus.Text = "logger actief !!";
+            this.labelLoggerStatus.BackColor = Color.Green;
+        }
+
+        private void btnStopLogger_Click(object sender, EventArgs e)
+        {
+            timerLoggerInterval.Enabled = false;
+            this.labelLoggerStatus.Text = "logger gestopt";
+            this.labelLoggerStatus.BackColor = Color.Red;
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPortArduino.Open();
+                if (serialPortArduino.IsOpen)
+                {
+                    this.timerShowProgress.Enabled = true;
+                    this.toolStripTextBox1.Enabled = false;
+                    this.toolStripTextBox2.Enabled = true;
+                }
+            }
+            catch (System.IO.IOException)
+            {
+                MessageBox.Show("Problems with openning the com port ", "Error");
+            }
+            catch (InvalidOperationException ex)
+            {
+
+                MessageBox.Show("Problems with openning the com port " + ex.ToString(), "Error");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Comport already in use ", "Error");
+            }
+
+        }
+
+        private void toolStripTextBox2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPortArduino.Close();
+                if (!serialPortArduino.IsOpen)
+                {
+                    this.timerShowProgress.Enabled = false;
+                    this.teller = 0;
+                    this.toolStripProgressBar1.Value = 0;
+                    this.toolStripTextBox1.Enabled = true;
+                    this.toolStripTextBox2.Enabled = false;
+                }
+            }
+            catch (System.IO.IOException)
+            {
+                MessageBox.Show("Problems with closing the com port ", "Error");
+            }
+            catch (InvalidOperationException ex)
+            {
+
+                MessageBox.Show("Problems with closing the com port " + ex.ToString(), "Error");
+            }
+
+        }
+
+        private void toolStripTextBox3_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                bestandsNaam = saveFileDialog1.FileName; 
+            }
+        }
+
+        private void timerLoggerInterval_Tick(object sender, EventArgs e)
+        { 
+            if (bestandsNaam != null)
+            {
+                log.save(bestandsNaam, LDRvalues);
+            }
+            else
+            {
+                timerLoggerInterval.Enabled = false;
+                MessageBox.Show("Waarschijnlijk geen bestandsnaam in gevult.", "Error");
+               
+            }
+        }
+
+        private void toolStripTextBox4_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+  
+        private void toolStripTextBox5_Click_1(object sender, EventArgs e)
+        {
+            aboutDialog abDialog = new aboutDialog();
+            abDialog.Show();
+        }
+ 
     }
 }
