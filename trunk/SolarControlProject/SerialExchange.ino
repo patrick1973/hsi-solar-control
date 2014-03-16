@@ -9,6 +9,12 @@ void showLdrValuesSerial()
   Serial.print(",");
   Serial.print(readDownLdrValue());
   Serial.print(",");
+  Serial.print(SystemState);
+  Serial.print(",");
+  Serial.print(getHorizontalPosFeedback());
+  Serial.print(",");
+  Serial.print(getVerticalPosFeedback());
+  Serial.print(",");
   Serial.println("end");
 }
 
@@ -20,7 +26,7 @@ String getStringBetween(String strSource, char charBegin, char charEnd)
   return strSource.substring(startIndex,stopIndex);
 }
 
-String getSerialCommand()
+String getSerialCommand(char beginChar, char endChar)
 {
   String inputString = "";
   while(Serial.available())
@@ -29,7 +35,21 @@ String getSerialCommand()
     
     inputString += inChar;
   } 
-  return getStringBetween(inputString, '$', '#');
+  return getStringBetween(inputString, beginChar, endChar);
 }
 
-
+/**
+*------------------------------------------------------------------------------
+*Read the time and or date from the C# application
+*------------------------------------------------------------------------------
+*/
+String readDateTime()
+{
+  String inputString = "";
+  while(Serial.available())
+  {
+    char inChar = (char)Serial.read(); 
+    inputString += inChar;
+   return inputString;
+  } 
+}

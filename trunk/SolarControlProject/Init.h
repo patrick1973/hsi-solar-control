@@ -9,6 +9,10 @@
 
 Servo servo_vertical;
 Servo servo_horizontal;
+const int MIN_VERTICAL = 15;
+const int MAX_VERTICAL = 100;
+const int MIN_HORIZONTAL = 1;
+const int MAX_HORIZONTAL = 179;
 
 // Digital pin setup
 const int SCROLL_PIN   = 2;
@@ -33,29 +37,4 @@ const int D7_PIN =  7;
 // create display object
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_pin, D5_PIN, D6_PIN, D7_PIN);
 
-/**
- *restPosition        both servo's are sent to position 0
- *controlPosition     find the best suncovarage, normal control
- *horizontalPosition  place the pannel horizontal, cleaning / repairs 
- *verticalPosition    defrosting hiding for hale showers
- */
-
-typedef enum Control
-{
-  restPosition,       
-  controlPosition,
-  gotoHorizontalPosition,
-  gotoVerticalPosition 
-}
-state;
-
-typedef enum machineStates
-{
-  SYSTEM_STOP,
-  SYSTEM_MANUAL,
-  SYSTEM_AUTO,
-  SYSTEM_CLEANING,
-  SYSTEM_MAINTENANCE,
-  SYSTEM_IDLE
-}mStates;
 

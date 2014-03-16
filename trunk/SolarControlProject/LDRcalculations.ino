@@ -75,17 +75,17 @@ int checkVerticalPosition()
     if (( avg_Left_Top()+ avg_Right_Top()) > (avg_Left_Bottom() + avg_Right_Bottom()))                // naar boven
     {
       valueVertical=--valueVertical;
-      if (valueVertical < 15)
+      if (valueVertical < MIN_VERTICAL)
       {
-        valueVertical = 15;
+        valueVertical = MIN_VERTICAL;
       }
     }
     else if ((avg_Left_Top() + avg_Right_Top()) < (avg_Left_Bottom() + avg_Right_Bottom()))          // naar beneden
     {
       valueVertical = ++valueVertical;
-      if (valueVertical > 100)
+      if (valueVertical > MAX_VERTICAL)
       {
-        valueVertical = 100;
+        valueVertical = MAX_VERTICAL;
       } 
     }
   }
@@ -105,69 +105,20 @@ int checkHorizontalPosition()
     if (( avg_Left_Top()+ avg_Left_Bottom()) > (avg_Right_Top() + avg_Right_Bottom())) 
     {
       valueHorizontal=++valueHorizontal;
-      if (valueHorizontal > 179)
+      if (valueHorizontal > MAX_HORIZONTAL)
       {
-        valueHorizontal = 179;
+        valueHorizontal = MAX_HORIZONTAL;
       }
     }
     else if ((avg_Left_Top() + avg_Left_Bottom()) < (avg_Right_Top() + avg_Right_Bottom()))
     {
       valueHorizontal = --valueHorizontal;
-      if (valueHorizontal < 1)
+      if (valueHorizontal < MIN_HORIZONTAL)
       {
-        valueHorizontal = 1;
-      }
-      
+        valueHorizontal = MIN_HORIZONTAL;
+      } 
     }
   }
   return valueHorizontal;
 }
 
-//int checkVerticalPosition()
-//{
-//  static int valueVertical = 0;
-//  if(-1*readToleranceValue() > differenceVertical() || differenceVertical() > readToleranceValue())
-//  {
-//    if (( avg_Left_Top()+ avg_Right_Top()) > (avg_Left_Bottom() + avg_Right_Bottom()))
-//    {
-//      valueVertical = ++valueVertical;
-//      if (valueVertical > 179)
-//      {
-//        valueVertical = 179;
-//      }
-//    }
-//    else if ((avg_Left_Top() + avg_Right_Top()) < (avg_Left_Bottom() + avg_Right_Bottom()))
-//    {
-//      valueVertical=--valueVertical;
-//      if (valueVertical < 1)
-//      {
-//        valueVertical = 1;
-//      }
-//    }
-//  }
-//  return valueVertical;
-//}
-//int checkHorizontalPosition()
-//{
-//  static int valueHorizontal = 0;
-//  if(-1*readToleranceValue() > differenceHorizontal() || differenceHorizontal() > readToleranceValue())
-//  {
-//    if (( avg_Left_Top()+ avg_Left_Bottom()) > (avg_Right_Top() + avg_Right_Bottom()))
-//    {
-//      valueHorizontal = --valueHorizontal;
-//      if (valueHorizontal < 1)
-//      {
-//        valueHorizontal = 1;
-//      }
-//    }
-//    else if ((avg_Left_Top() + avg_Left_Bottom()) < (avg_Right_Top() + avg_Right_Bottom()))
-//    {
-//      valueHorizontal=++valueHorizontal;
-//      if (valueHorizontal > 179)
-//      {
-//        valueHorizontal = 179;
-//      }
-//    }
-//  }
-//  return valueHorizontal;
-//}
