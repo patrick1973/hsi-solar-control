@@ -50,12 +50,23 @@ namespace solarproject
 
         void serialPortArduino_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            int charTeller=0;
             SerialPort sp = (SerialPort)sender;
             //inData = sp.ReadLine()+ "\n";
             
             String temp = "";
             temp = comms.readSerialData(sp, "begin", "end");
-            Eventvalues = comms.collect(temp);
+            foreach (char item in temp)
+            {
+                if(item.Equals(','))
+                {
+                charTeller++;
+                }
+            }
+            if (charTeller == 7)
+            {
+                Eventvalues = comms.collect(temp);
+            }
         }
 
         
@@ -136,15 +147,23 @@ namespace solarproject
                 //String temp = "";
                 //temp = comms.readSerialData(serialPortArduino, "begin", "end");
                 //Eventvalues = comms.collect(temp);
-                if (Eventvalues.Count >= 3)
+
+                try
                 {
-                    this.tbLDRLeft.Text = Eventvalues[0];
-                    this.tbLDRRight.Text = Eventvalues[1];
-                    this.tbLDRTop.Text = Eventvalues[2];
-                    this.tbLDRBottom.Text = Eventvalues[3];
-                    this.tbArduinoStatus.Text = Eventvalues[4];
-                    this.tbFeedbackHorizontal.Text = Eventvalues[5] + "°";
-                    this.tbFeedbackVertical.Text = Eventvalues[6] + "°";
+                    if (Eventvalues.Count >= 6)
+                    {
+                        this.tbLDRLeft.Text = Eventvalues[0];
+                        this.tbLDRRight.Text = Eventvalues[1];
+                        this.tbLDRTop.Text = Eventvalues[2];
+                        this.tbLDRBottom.Text = Eventvalues[3];
+                        this.tbArduinoStatus.Text = Eventvalues[4];
+                        this.tbFeedbackHorizontal.Text = Eventvalues[5] + "°";
+                        this.tbFeedbackVertical.Text = Eventvalues[6] + "°";
+                    }
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show("error in een van de read agrguments  : " + ex, "Error");
                 }
             }
         }

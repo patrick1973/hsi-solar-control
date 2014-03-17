@@ -163,7 +163,7 @@
             // timerUpdateArduinoValues
             // 
             this.timerUpdateArduinoValues.Enabled = true;
-            this.timerUpdateArduinoValues.Interval = 1500;
+            this.timerUpdateArduinoValues.Interval = 2000;
             this.timerUpdateArduinoValues.Tick += new System.EventHandler(this.timerUpdateArduinoValues_Tick);
             // 
             // tbLDRLeft
