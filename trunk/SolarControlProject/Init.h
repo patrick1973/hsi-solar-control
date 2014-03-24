@@ -1,11 +1,5 @@
 #include <arduino.h>
 
-// setup values for the Steinman calculations used for the NTC
-#define THERMISTORNOMINAL 10000 // resistance at 25 degrees C     
-#define TEMPERATURENOMINAL 25   // temp. for nominal resistance (almost always 25 C)
-#define NUMSAMPLES 5            // how many samples to take and average
-#define BCOEFFICIENT 3950       // The beta coefficient of the thermistor (usually 3000-4000)
-#define SERIESRESISTOR 10000    // the value of the 'other' resistor
 
 // setup Values for the ADC / DAC PCF8591P on the I2C
 #define PCF8591 (0x90 >> 1)     // PCF8591P I2C bus address

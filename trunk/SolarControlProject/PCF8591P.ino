@@ -10,4 +10,12 @@ void readADCvalues( int *adcValues,int lenght)
    adcValues[1] = Wire.read();       // read the value of the adac channel
    adcValues[2] = Wire.read();       // read the value of the adac channel
    adcValues[3] = Wire.read();       // read the value of the adac channel
+   Serial.print(adcValues[0]);
+   Serial.print("--");
+    Serial.print(adcValues[1]);
+   Serial.print("--");
+    Serial.print(adcValues[2]);
+   Serial.print("--");
+    Serial.print(adcValues[3]);
+   Serial.print("\n");
 }
