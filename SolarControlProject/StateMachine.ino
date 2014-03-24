@@ -11,19 +11,26 @@ int getSerialSystemState()
   static int JogUpDown =15;
   static int JogLeftRight =0;
   static int iSysState= 5;
-
+ 
   String command = "";
   String systemStateNumber = "";
 
   String newReceivedMessage = getSerialCommand('$', '#');
   String systemState = getStringBetween(newReceivedMessage,'$',';');  // Get state name
   systemStateNumber = getStringBetween(newReceivedMessage,';','#');   // Get state number
-
-  if (systemStateNumber.toInt() > 0 )
+  
+  
+    if (systemStateNumber.toInt() > 0 )
+    {
+      iSysState = systemStateNumber.toInt();
+    }
+  
+  if ( !globalDefrostState == -1 )
   {
-    iSysState = systemStateNumber.toInt();
+    iSysState =7;
   }
-
+  
+    
   switch (  iSysState )
   {
   case 0: //dummy doe niets
@@ -117,6 +124,7 @@ int getSerialSystemState()
   } 
   return iSysState;
 }
+
 
 
 
