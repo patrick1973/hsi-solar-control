@@ -26,7 +26,8 @@ const int MIN_HORIZONTAL = 1;
 const int MAX_HORIZONTAL = 179;
 
 // Digital pin setup
-const int SCROLL_PIN   = 2;
+const int SELECT_PIN   = 2;
+const int SCROLL_PIN   = 3;
 const int LED_PIN      = 13;
 
 // analoge pin setup
@@ -46,5 +47,13 @@ const int D7_PIN =  7;
 // create display object
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_pin, D5_PIN, D6_PIN, D7_PIN);
 
-int adcValues0,adcValues1,adcValues2,adcValues3;
+// servo pins are connected to pin 5 and 6
 
+// states for defrost.
+typedef enum
+{
+  DEFROST_IDLE,
+  DEFROST_ACTIVE,
+  FINALIZING_DEFROST,
+  FINISHED_DEFROST
+}dState;
