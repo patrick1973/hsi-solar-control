@@ -50,6 +50,11 @@ void panelVerticalPosition()
   servo_vertical.write(15);
 }
 
+void panelDefrostPosition()
+{
+   servo_vertical.write(45);
+   // 
+}
 void jogServoVertical( int value )
 {
   servo_vertical.write(value);

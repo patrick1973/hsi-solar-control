@@ -1,6 +1,6 @@
 void showLdrValuesSerial()
 {
-  Serial.print("begin");
+  Serial.print("$");
   Serial.print(readLeftLdrValue());
   Serial.print(",");
   Serial.print(readRightLdrValue());
@@ -15,7 +15,7 @@ void showLdrValuesSerial()
   Serial.print(",");
   Serial.print(getVerticalPosFeedback());
   Serial.print(",");
-  Serial.println("end");
+  Serial.println("#");
 }
 
 String getStringBetween(String strSource, char charBegin, char charEnd)

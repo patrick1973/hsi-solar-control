@@ -26,7 +26,7 @@ int getSerialSystemState()
 
   switch (  iSysState )
   {
-  case 0: //dummy
+  case 0: //dummy doe niets
     break;
 
   case 1: //SYS_MANUAL
@@ -112,6 +112,7 @@ int getSerialSystemState()
   case 7: 
     lcd.print("SYS_DEFROST     ");
     lcd.setCursor(0,0);
+    panelDefrostPosition();
     break; 
   } 
   return iSysState;

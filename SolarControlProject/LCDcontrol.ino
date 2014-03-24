@@ -1,4 +1,5 @@
 
+// tot nu toe alleen gebruikt voor debugging.
 void showLdrValuesLCD()
 {
   lcd.clear();

@@ -54,7 +54,7 @@ int readDownLdrValue()
  */
 byte readHysteresisValue()
 {
-  return adcValues3;
+  return adcValues[3];
 }
 /**
  *------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ byte readHysteresisValue()
  */
 byte readNtcValueOutside()
 {
-  return adcValues0;
+  return adcValues[0];
 }
 
 /**
@@ -73,7 +73,7 @@ byte readNtcValueOutside()
  */
 byte readNtcValuePanel()
 {
-  return adcValues1;
+  return adcValues[1];
 }
 /**
  *------------------------------------------------------------------------------
@@ -82,5 +82,27 @@ byte readNtcValuePanel()
  */
 byte readPotValueEODS()
 {
-  return adcValues2;
+  return adcValues[2];
+}
+
+int readScrollButton()
+{
+  return digitalRead(SCROLL_PIN);
+}
+
+int readSelectButton()
+{
+  return digitalRead(SELECT_PIN);
+}
+
+void led13Control( int state )
+{
+  if ( state == HIGH ) 
+  {
+    digitalWrite(LED_PIN,HIGH);
+  }
+  else
+  {
+    digitalWrite(LED_PIN,LOW);
+  }
 }
