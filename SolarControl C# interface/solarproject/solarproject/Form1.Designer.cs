@@ -83,7 +83,6 @@
             this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -111,9 +110,9 @@
             this.toolStripStatusLabelBaudRate,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabelComPort});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 556);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 443);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1359, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1191, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -127,25 +126,25 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(63, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(61, 17);
             this.toolStripStatusLabel3.Text = "Baud rate :";
             // 
             // toolStripStatusLabelBaudRate
             // 
             this.toolStripStatusLabelBaudRate.Name = "toolStripStatusLabelBaudRate";
-            this.toolStripStatusLabelBaudRate.Size = new System.Drawing.Size(57, 17);
+            this.toolStripStatusLabelBaudRate.Size = new System.Drawing.Size(54, 17);
             this.toolStripStatusLabelBaudRate.Text = "BaudRate";
             // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(126, 17);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(110, 17);
             this.toolStripStatusLabel4.Text = "communication port : ";
             // 
             // toolStripStatusLabelComPort
             // 
             this.toolStripStatusLabelComPort.Name = "toolStripStatusLabelComPort";
-            this.toolStripStatusLabelComPort.Size = new System.Drawing.Size(53, 17);
+            this.toolStripStatusLabelComPort.Size = new System.Drawing.Size(46, 17);
             this.toolStripStatusLabelComPort.Text = "comport";
             // 
             // toolStripStatusLabel1
@@ -438,7 +437,7 @@
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1359, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1191, 24);
             this.menuStrip1.TabIndex = 32;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -451,7 +450,7 @@
             this.toolStripTextBox2,
             this.toolStripTextBox4});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 20);
             this.toolStripMenuItem1.Text = "Arduino Connection";
             // 
             // communicationPortToolStripMenuItem
@@ -459,13 +458,13 @@
             this.communicationPortToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripCbPorts});
             this.communicationPortToolStripMenuItem.Name = "communicationPortToolStripMenuItem";
-            this.communicationPortToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.communicationPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.communicationPortToolStripMenuItem.Text = "Communication Port";
             // 
             // toolStripCbPorts
             // 
             this.toolStripCbPorts.Name = "toolStripCbPorts";
-            this.toolStripCbPorts.Size = new System.Drawing.Size(121, 23);
+            this.toolStripCbPorts.Size = new System.Drawing.Size(121, 21);
             this.toolStripCbPorts.Text = "Choose com port";
             this.toolStripCbPorts.SelectedIndexChanged += new System.EventHandler(this.toolStripCbPorts_SelectedIndexChanged);
             // 
@@ -474,7 +473,7 @@
             this.baudRateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripCBbaudrate});
             this.baudRateToolStripMenuItem.Name = "baudRateToolStripMenuItem";
-            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.baudRateToolStripMenuItem.Text = "Baud rate";
             // 
             // toolStripCBbaudrate
@@ -492,28 +491,28 @@
             "57600",
             "115200"});
             this.toolStripCBbaudrate.Name = "toolStripCBbaudrate";
-            this.toolStripCBbaudrate.Size = new System.Drawing.Size(121, 23);
+            this.toolStripCBbaudrate.Size = new System.Drawing.Size(121, 21);
             this.toolStripCBbaudrate.Text = "Choose a baudrate";
             this.toolStripCBbaudrate.SelectedIndexChanged += new System.EventHandler(this.toolStripCBbaudrate_SelectedIndexChanged);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox1.Text = "Connect Arduino";
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             // 
             // toolStripTextBox2
             // 
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(120, 23);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(120, 21);
             this.toolStripTextBox2.Text = "Disconnect Arduino";
             this.toolStripTextBox2.Click += new System.EventHandler(this.toolStripTextBox2_Click);
             // 
             // toolStripTextBox4
             // 
             this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox4.Text = "Exit";
             this.toolStripTextBox4.Click += new System.EventHandler(this.toolStripTextBox4_Click_1);
             // 
@@ -522,13 +521,13 @@
             this.loggerInstellingenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox3});
             this.loggerInstellingenToolStripMenuItem.Name = "loggerInstellingenToolStripMenuItem";
-            this.loggerInstellingenToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
+            this.loggerInstellingenToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.loggerInstellingenToolStripMenuItem.Text = "Logger instellingen";
             // 
             // toolStripTextBox3
             // 
             this.toolStripTextBox3.Name = "toolStripTextBox3";
-            this.toolStripTextBox3.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox3.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox3.Text = "Bestands Naam";
             this.toolStripTextBox3.Click += new System.EventHandler(this.toolStripTextBox3_Click);
             // 
@@ -537,13 +536,13 @@
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox5});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(40, 20);
             this.toolStripMenuItem2.Text = "Help";
             // 
             // toolStripTextBox5
             // 
             this.toolStripTextBox5.Name = "toolStripTextBox5";
-            this.toolStripTextBox5.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox5.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox5.Text = "?";
             this.toolStripTextBox5.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolStripTextBox5.Click += new System.EventHandler(this.toolStripTextBox5_Click_1);
@@ -558,21 +557,12 @@
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(1133, 107);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(214, 446);
-            this.richTextBox1.TabIndex = 33;
-            this.richTextBox1.Text = "";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1359, 578);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(1191, 465);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tbArduinoStatus);
             this.Controls.Add(this.label6);
@@ -661,7 +651,6 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
