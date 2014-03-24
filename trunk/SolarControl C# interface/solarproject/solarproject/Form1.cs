@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
+
 using System.Threading;
 
 
@@ -55,7 +56,7 @@ namespace solarproject
             //inData = sp.ReadLine()+ "\n";
             
             String temp = "";
-            temp = comms.readSerialData(sp, "begin", "end");
+            temp = comms.readSerialData(sp, "$", "#"); // let op!! 19-03-2014 aan gepast //sp, "begin", "end"
             foreach (char item in temp)
             {
                 if(item.Equals(','))
@@ -352,7 +353,7 @@ namespace solarproject
         { 
             if (bestandsNaam != null)
             {
-                log.save(bestandsNaam, LDRvalues);
+                log.save(bestandsNaam, Eventvalues);
             }
             else
             {

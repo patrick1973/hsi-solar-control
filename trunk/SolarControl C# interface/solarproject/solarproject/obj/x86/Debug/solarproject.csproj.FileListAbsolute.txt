@@ -17,3 +17,19 @@ D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdracht
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.aboutDialog.resources
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.csprojResolveAssemblyReference.cache
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.spashScreen.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.aboutDialog.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.spashScreen.resources
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.exe
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\bin\Debug\solarproject.exe
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\bin\Debug\solarproject.pdb
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.csprojResolveAssemblyReference.cache
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.aboutDialog.resources
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.Form1.resources
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.Properties.Resources.resources
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.spashScreen.resources
+C:\Users\N.J.A\Desktop\School\Semester 2\Blok 1\HSI1\Week 4-5-6\SolarControlProject\SolarControl C# interface\solarproject\solarproject\obj\x86\Debug\solarproject.csproj.GenerateResource.Cache
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.exe
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
+D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.exe
+D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
