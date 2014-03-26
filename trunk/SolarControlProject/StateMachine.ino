@@ -6,31 +6,30 @@
  *------------------------------------------------------------------------------
  */
 
-int getSerialSystemState()
+int getSerialSystemState(int manualState)
 {
   static int JogUpDown =15;
   static int JogLeftRight =0;
   static int iSysState= 5;
- 
+  static int deforstStatus;
   String command = "";
   String systemStateNumber = "";
 
   String newReceivedMessage = getSerialCommand('$', '#');
   String systemState = getStringBetween(newReceivedMessage,'$',';');  // Get state name
   systemStateNumber = getStringBetween(newReceivedMessage,';','#');   // Get state number
-  
-  
-    if (systemStateNumber.toInt() > 0 )
-    {
-      iSysState = systemStateNumber.toInt();
-    }
-  
-  if ( !globalDefrostState == -1 )
+
+
+  if (systemStateNumber.toInt() > 0 )
   {
-    iSysState =7;
+    iSysState = systemStateNumber.toInt();
   }
-  
-    
+
+  if (manualState > 0 )
+  {
+    iSysState = manualState;
+  }
+
   switch (  iSysState )
   {
   case 0: //dummy doe niets
@@ -93,9 +92,14 @@ int getSerialSystemState()
     break;
   case 2: //SYS_AUTO
     lcd.setCursor(0,0);
-    lcd.print("SYS_AUTO        ");  
-    servo_vertical.write(checkVerticalPosition());
-    servo_horizontal.write(checkHorizontalPosition());
+    lcd.print("SYS_AUTO :");  
+    lcd.print(deforstStatus); 
+    //deforstStatus = defrostControl();
+    if  (deforstStatus == 0 ) 
+    {
+      servo_vertical.write(checkVerticalPosition());
+      servo_horizontal.write(checkHorizontalPosition());
+    }
     break;
   case 3: //SYS_CLEANING
     lcd.print("SYS_CLEANING    ");  
@@ -117,12 +121,47 @@ int getSerialSystemState()
     lcd.setCursor(0,0);
     break;
   case 7: 
-    lcd.print("SYS_DEFROST     ");
     lcd.setCursor(0,0);
+    lcd.print("SYS_DEFR :");
+    lcd.print(deforstStatus); 
+    //deforstStatus = defrostControl();
     panelDefrostPosition();
     break; 
-  } 
+  }
+  deforstStatus = defrostControl(iSysState);
   return iSysState;
+}
+
+int manualStateSelect (int selelectBtn, int scrollBtn)
+{
+  static int lastButtonState = 0;
+  static int counter = 0;
+  static int histCounter = 0;
+  histCounter = counter;
+  if (selelectBtn == HIGH ) 
+  {
+    if (scrollBtn != lastButtonState)
+    {
+      if (scrollBtn == HIGH)
+      {
+        counter++;
+        if (counter >7 )
+        {
+          counter = 0;
+        }
+      }
+    }
+    lastButtonState = scrollBtn;
+  }
+  if (histCounter == counter)
+  {
+    return -99;
+  }
+  else
+  {
+    Serial.println(counter);
+    return counter;
+  }
 }
 
 

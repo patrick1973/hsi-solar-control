@@ -6,6 +6,7 @@ void setupIO()
   servo_horizontal.attach(6); // attaches the servo on pin 6 (Horizontal) to the servo object
   
   pinMode(SCROLL_PIN, INPUT);
+  pinMode(SELECT_PIN, INPUT);
   pinMode(LED_PIN,OUTPUT);
   lcd.begin(16, 2);
 

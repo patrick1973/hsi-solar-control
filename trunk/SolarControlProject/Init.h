@@ -8,8 +8,8 @@
 #define ADC2 0x02
 #define ADC3 0x03
 
-const int MAX_VALUE_ADC_PCF8591P = 255; // expander is 8 bit 
-const int MAX_VALUE_ADC_ARDUINO =1023;  // arduino is 10 bit
+const double MAX_VALUE_ADC_PCF8591P = 255; // expander is 8 bit 
+const double MAX_VALUE_ADC_ARDUINO =1023;  // arduino is 10 bit
 
 
 Servo servo_vertical;
