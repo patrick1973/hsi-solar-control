@@ -1,4 +1,4 @@
-int defrostControl()
+int defrostControl(int sState)
 {
   static int noBlockingCounter = 0;
   static int finalDefrostCounter =0;
@@ -22,9 +22,12 @@ int defrostControl()
   lcd.print(ntc2);
   lcd.print("-");
   lcd.print(stopDefrost);
-  
-  if ((SystemState == 2) || (SystemState == 7))
-  {
+ 
+ 
+ if (sState != 2 && sState != 7)           // indien het system niet in automaat staat en niet in hand ontdooi dan moet de ontdooi cyclus terug naar idle stand.       
+ {                                         // Door het FINISHED_DEFROST aan te roepen worden alle outputs en teller mbt ontdoien op 0 gezet.
+   defrostState = FINISHED_DEFROST;        // deze functionaliteiten zijn nog niet in de documenten opgenomen. 26-03-2014
+ }
      switch (defrostState)
     {
     case DEFROST_IDLE:
@@ -61,8 +64,6 @@ int defrostControl()
       break;
     }
     return defrostState;
-  }
-    return -1;
 }
 
 

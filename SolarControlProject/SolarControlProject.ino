@@ -6,9 +6,8 @@
 
 
 int SystemState;
-int globalDefrostState;
 int adcValues[4];
-
+int manState;
 int test = 99;
 void setup()
 { 
@@ -17,12 +16,10 @@ void setup()
 
 void loop()
 {
-  test=99;
   readADCvalues(&adcValues[0],4);          // update every cycle the ADC converter.
-  SystemState = getSerialSystemState();
+  manState = manualStateSelect(readSelectButton(),readScrollButton());
+  SystemState = getSerialSystemState(manState);
   showLdrValuesSerial();
-  globalDefrostState = defrostControl();
-  Serial.print(globalDefrostState);
   delay(50);
 }
 
