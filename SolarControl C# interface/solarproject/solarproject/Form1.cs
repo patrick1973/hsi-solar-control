@@ -22,6 +22,7 @@ namespace solarproject
         List<String> Eventvalues = new List<string>();
         Communications comms = new Communications();
         Logger log = new Logger();
+        
 
 
         private String bestandsNaam;
@@ -64,7 +65,7 @@ namespace solarproject
                 charTeller++;
                 }
             }
-            if (charTeller == 7)
+            if (charTeller == 10)
             {
                 Eventvalues = comms.collect(temp);
             }
@@ -157,9 +158,12 @@ namespace solarproject
                         this.tbLDRRight.Text = Eventvalues[1];
                         this.tbLDRTop.Text = Eventvalues[2];
                         this.tbLDRBottom.Text = Eventvalues[3];
-                        this.tbArduinoStatus.Text = Eventvalues[4];
+                        this.tbArduinoStatus.Text = ((state)Convert.ToInt32(Eventvalues[4])).ToString();
                         this.tbFeedbackHorizontal.Text = Eventvalues[5] + "°";
                         this.tbFeedbackVertical.Text = Eventvalues[6] + "°";
+                        this.tbNTC1.Text = Eventvalues[7] + "°C";
+                        this.tbNTC2.Text = Eventvalues[8] + "°C";
+                        this.tbStopDefrost.Text = Eventvalues[9] + "°C";
                     }
                 }
                 catch (ArgumentException ex)
@@ -374,6 +378,8 @@ namespace solarproject
             aboutDialog abDialog = new aboutDialog();
             abDialog.Show();
         }
+
+        
  
     }
 }

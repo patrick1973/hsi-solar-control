@@ -33,3 +33,12 @@ Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijk
 Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.exe
 D:\Users\Patrick van Ieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.pdb
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\bin\Debug\solarproject.exe
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\bin\Debug\solarproject.pdb
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.aboutDialog.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.Form1.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.Properties.Resources.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\solarproject.spashScreen.resources
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\GenerateResource.read.1.tlog
+Z:\Harddisk C\Users\patrick.vanieperen\Dropbox\Fontys\Opleiding HSI-1\Gezamelijke Opdrachten\Solar Project\SolarControl C# interface V2\solarproject\solarproject\obj\x86\Debug\GenerateResource.write.1.tlog
