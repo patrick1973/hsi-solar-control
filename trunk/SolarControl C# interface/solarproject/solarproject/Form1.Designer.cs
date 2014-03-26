@@ -83,6 +83,12 @@
             this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbNTC1 = new System.Windows.Forms.TextBox();
+            this.tbNTC2 = new System.Windows.Forms.TextBox();
+            this.tbStopDefrost = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -110,7 +116,7 @@
             this.toolStripStatusLabelBaudRate,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabelComPort});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 443);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1191, 22);
             this.statusStrip1.TabIndex = 6;
@@ -557,12 +563,69 @@
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
+            // tbNTC1
+            // 
+            this.tbNTC1.Location = new System.Drawing.Point(54, 514);
+            this.tbNTC1.Name = "tbNTC1";
+            this.tbNTC1.Size = new System.Drawing.Size(66, 20);
+            this.tbNTC1.TabIndex = 33;
+            this.tbNTC1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbNTC2
+            // 
+            this.tbNTC2.Location = new System.Drawing.Point(239, 514);
+            this.tbNTC2.Name = "tbNTC2";
+            this.tbNTC2.Size = new System.Drawing.Size(66, 20);
+            this.tbNTC2.TabIndex = 34;
+            this.tbNTC2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbStopDefrost
+            // 
+            this.tbStopDefrost.Location = new System.Drawing.Point(422, 514);
+            this.tbStopDefrost.Name = "tbStopDefrost";
+            this.tbStopDefrost.Size = new System.Drawing.Size(66, 20);
+            this.tbStopDefrost.TabIndex = 35;
+            this.tbStopDefrost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 494);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "NTC 1 value";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(238, 494);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "NTC 2 value";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(409, 495);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Stop defrost temp";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1191, 465);
+            this.ClientSize = new System.Drawing.Size(1191, 630);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbStopDefrost);
+            this.Controls.Add(this.tbNTC2);
+            this.Controls.Add(this.tbNTC1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tbArduinoStatus);
             this.Controls.Add(this.label6);
@@ -651,6 +714,12 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.TextBox tbNTC1;
+        private System.Windows.Forms.TextBox tbNTC2;
+        private System.Windows.Forms.TextBox tbStopDefrost;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }
 
