@@ -15,6 +15,12 @@ void showLdrValuesSerial()
   Serial.print(",");
   Serial.print(getVerticalPosFeedback());
   Serial.print(",");
+  Serial.print(Thermistor(readNtcValueOutside()),2);
+  Serial.print(",");
+  Serial.print(Thermistor(readNtcValuePanel()),2);
+  Serial.print(",");
+  Serial.print(Thermistor(readPotValueEODS()),2);
+  Serial.print(",");
   Serial.println("#");
 }
 
